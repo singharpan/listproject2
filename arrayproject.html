@@ -1,0 +1,128 @@
+<html>
+  <head>
+    <title>
+      Array
+    </title>
+
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+
+  <body>
+    <h1>THIS IS FOR ARRAY</h1>
+    <h2>Ready for Array magic</h2>
+    <div id="root"></div>
+    <script type="text/babel">
+      const fooditems = [
+        {
+          item: "Apple",
+          quantity: 10,
+          category: "Fruit",
+        },
+        {
+          item: "Brocalli",
+          quantity: 8,
+          category: "Vegie",
+        },
+        {
+          item: "CoCO COLA",
+          quantity: 5,
+          category: "drinks",
+        },
+        {
+          item: "Bike",
+          quantity: 15,
+          category: "Automobile",
+        },
+      ];
+
+      function ArrayItem() {
+        return (
+          <div>
+            {fooditems.map((i) => (
+              <div>
+                <h3 style={{ color: "green", border: "2px solid yellow" }}>
+                  Item is :{i.item} <i>having Quantity</i> : {i.quantity}{" "}
+                  <i>and Category </i>: {i.category}
+                </h3>
+              </div>
+            ))}
+          </div>
+        );
+      }
+
+      const country = ["India", "Isreal", "USA", "France", "Russia"];
+      class RadioButton extends React.Component {
+        render() {
+          return (
+            <React.Fragment>
+              {country.map((i) => (
+                <div>
+                  <input type="radio" value="First" name="same" />
+                  <span>{i}</span>
+                </div>
+              ))}{" "}
+            </React.Fragment>
+          );
+        }
+      }
+
+      const arraycomp = [
+        {
+          first: "Rahul",
+          lastname: "Singh",
+        },
+        {
+          first: "Ram",
+          lastname: "Ram",
+        },
+        {
+          first: "Shyam",
+          lastname: "Pandey",
+        },
+        {
+          first: "DEE",
+          lastname: "teari",
+        },
+      ];
+
+      class Child extends React.Component {
+        render() {
+          return (
+            <div>
+              <h1>
+                {" "}
+                {this.props.first}
+                <small>{this.props.lastname}</small>
+              </h1>
+            </div>
+          );
+        } // Child Component
+      }
+
+      class Main extends React.Component {
+        render() {
+          return (
+            <div>
+              {arraycomp.map(
+                (item) => (
+                  <Child first={item.first} lastname={item.lastname} />
+                ) //Parent Component
+              )}
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(
+        <div>
+          <ArrayItem />,
+          <Main />,
+          <RadioButton />
+        </div>,
+        document.getElementById("root")
+      );
+    </script>
+  </body>
+</html>

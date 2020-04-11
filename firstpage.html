@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        React
+    </title>
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+    <H1>Hi this ReactDOM</H1>
+    <div id="first">
+        Hello there
+    </div>
+
+  
+
+
+    <script type="text/babel">
+ 
+    // function Welcome(){
+    //     return <h2>Hi this is function</h2>;
+    // }
+
+const name="Click Here";
+
+class Welcome extends React.Component{
+    render(){
+        return <div>
+        <input type="text"/>
+        <input type="button" value={name}/>
+        
+        </div>
+    }
+}
+
+
+const array='Hello React Javascript';
+
+const What=(array)=>{
+
+return array.split(" ");
+
+
+}
+
+class Well extends React.Component{
+render(){
+    return <h1> HIIII  {What(array[1])} </h1>
+}
+
+
+
+}
+
+const cond="asd";
+
+class Welll extends React.Component{
+
+    render(){
+if(cond=="true"){
+    return <h2>This is true</h2>
+}
+else{ return <h1>This is false</h1>}
+
+
+    }
+}
+
+
+let items=0;
+
+function status(){
+    if(items==0){
+        return "Empty";
+    }
+    else{
+        return "Full";
+    }
+}
+
+class Cart extends React.Component{
+    render(){
+        return(
+            <div>
+<h1>This is Cart</h1>
+
+<h2>Cart status: {status()} </h2>
+
+            </div>
+        )
+    }
+}
+
+
+
+
+let counter;
+
+class ButtonEvent extends React.Component{
+state={
+    counter:0,
+    isDisable:true
+}//intitializing the state
+
+ClickHere=()=>{
+    this.setState({counter:this.state.counter+1}); //passing counter object and incrementing it+Updating the state
+    console.log("Button Clicked", this);
+}
+
+ //state of no of times button clicked is assigned to it
+//render function is called every time state changes
+    render(){
+        return( 
+            <div>
+            <button onClick={this.ClickHere} disabled={this.state.isDisable}>Click</button>
+    <h2>counter: {this.state.counter}</h2> 
+    </div>)
+    }
+}
+
+
+
+let cartvalue;
+
+
+class Addremove extends React.Component{
+
+state={
+    cartvalue:0,
+    isDisable:false
+}
+Add=()=>{
+    
+    this.setState({cartvalue:this.state.cartvalue+1});
+
+}
+Remove=()=>{
+    this.setState({cartvalue:this.state.cartvalue-1});
+    
+}
+
+    render(){
+      
+return(
+    
+        <div>
+        <h1>Welcome to Shopping</h1>
+<button onClick={this.Add}>Add to Cart</button>
+<button onClick={this.Remove} >Remove</button>
+<h3>Cart Status :{this.state.cartvalue}</h3>
+
+     </div>
+)
+    
+}
+}
+
+const arraycomp=[
+    {
+        first:"Rahul",
+        lastname:"Singh"
+    },
+    {
+    first :"Ram",
+    lastname:"Ram"
+    },
+    {
+        first:"Shyam",
+        lastname:"Pandey"
+    },
+    {
+        first:"DEE",
+        lastname:"teari"
+    }
+
+]
+
+
+class Child extends React.Component{
+    render(){
+return (
+    <div>
+    <h1> {this.props.first}
+<small>{this.props.lastname}</small>
+</h1>
+</div>
+)}// Child Component
+}
+
+
+
+class Main extends React.Component{
+    render(){
+return(
+<div>
+{
+arraycomp.map(item=>(
+
+<Child first={item.first} lastname={item.lastname}/>
+
+)//Parent Component
+)
+}
+</div>
+)
+  }
+}
+
+const fooditems=[
+    
+    
+    {
+    item:"Apple",
+    quantity:10,
+    category:"Fruit"
+},
+{
+    item:"Brocalli",
+    quantity:8,
+    category:"Vegie"
+},
+{
+    item:"CoCO COLA",
+    quantity:5,
+    category:"drinks"
+},
+{
+    item:"Bike",
+    quantity:15,
+    category:"Automobile"
+}
+
+]
+
+// class ChildPass extends React.Component{
+// render(){
+//     return(
+//         <div>
+
+//             <h1>{it.item} {quant.quantity}{cat.category}</h1>
+
+//         </div>
+//     )
+// }
+// }
+    
+// class DescItem extends React.Component{
+    
+//     render(){
+//         return(
+//             <div>
+// {
+// fooditems.map(i=>
+//     <div>
+//     <h1> it={i.item} quant={i.quantity} cat={i.category}</h1>
+// </div>
+// ))
+
+
+// }
+
+//             </div>)
+        
+//     }
+// }
+
+
+class Wel extends React.Component{
+    render(){
+        return(
+        <div>
+<Welcome/>
+<input type="checkbox" />
+<Element text={"Apples"}/>
+<Welcome/>
+<Well/>
+<Welll/>
+<Cart/>
+<ButtonEvent/>
+<Addremove/>
+<Main/>
+
+        </div>
+        );
+    }
+}
+
+
+
+const Element=(props)=>{
+
+
+    return(
+    <div>
+        
+        <ul>
+<li>{props.text}</li>
+<li>{props.text}</li>
+<li>{props.text}</li>
+<li>{props.text}</li>
+<li>{props.text}</li>
+        </ul>
+        </div>
+    )
+
+}
+
+
+    
+ReactDOM.render(
+    <Wel/>,  document.getElementById('first')
+);
+
+
+
+</script>
+</body>
+
+</html>
